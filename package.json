@@ -1,13 +1,13 @@
 {
-  "name": "gatsby-universal",
+  "name": "personal-website",
   "license": "MIT",
-  "author": "Fabian Schultz <desk@fabianschultz.com>",
+  "author": "Can Uzunoglu <bcanuzunoglu@gmail.com>",
   "scripts": {
     "develop": "gatsby develop",
     "serve": "gatsby serve",
     "ssr": "npm run build && npm run serve",
     "format": "prettier --config ./.prettierrc --write src/**/*.js",
-    "build:dir": "mkdir -p public/icons/",
+    "build:dir": "mkdirp -p public/icons/",
     "build:favicons": "node scripts/favicons",
     "build": "npm run build:dir && npm run build:favicons && gatsby build",
     "test": "ava **/*.test.js --verbose"
@@ -35,6 +35,7 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0",
+    "react-icons": "^3.1.0",
     "react-pose": "^3.3.0",
     "styled-components": "^4.0.0-beta.7"
   },
@@ -53,6 +54,7 @@
     "favicons": "^5.1.1",
     "gatsby-plugin-eslint": "^2.0.1",
     "lighthouse": "^3.0.3",
+    "mkdirp": "^0.5.1",
     "node-gyp": "^3.7.0",
     "prettier": "^1.13.5",
     "why-did-you-update": "0.1.1"

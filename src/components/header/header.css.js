@@ -7,7 +7,7 @@ export const Container = styled.header`
   padding: 4rem;
 
   a {
-    color: #757575;
+    color: #333;
     transition: color 0.2s ease;
     text-decoration: none;
 
