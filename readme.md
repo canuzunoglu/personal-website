@@ -1,6 +1,6 @@
 ```bash
 # Installation with `git clone`
-git clone my-site https://github.com/canuzunoglu/personal-website.git
+git clone https://github.com/canuzunoglu/personal-website.git
 cd personal-website
 yarn install
 

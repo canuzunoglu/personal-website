@@ -10,7 +10,11 @@ const Index = ({ data }) => (
   <Layout>
     <Box>
       <Title as="h2" size="large">
-        {data.homeJson.content.childMarkdownRemark.rawMarkdownBody}
+        {data.homeJson.title}
+      </Title>
+      <br />
+      <Title as="p" size="small">
+        {data.homeJson.description}
       </Title>
       <Social />
     </Box>
@@ -27,12 +31,7 @@ export const query = graphql`
   query HomepageQuery {
     homeJson {
       title
-      content {
-        childMarkdownRemark {
-          html
-          rawMarkdownBody
-        }
-      }
+      description
     }
   }
 `;
