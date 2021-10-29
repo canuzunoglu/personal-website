@@ -1,0 +1,20 @@
+---
+const {title} = Astro.props;
+import BaseHead from './BaseHead.astro';
+import Footer from '../components/Footer';
+import Header from '../components/Header.astro';
+---
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href={Astro.resolve('../styles/globals.css')}
+    >
+    <BaseHead title={title || "Can Uzunoglu | UI developer"} description="Homepage of a ui developer" />
+  </head>
+  <body class="m-10 dark:bg-gray-900 dark:text-gray-200 bg-gray-100 text-gray-800">
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>
