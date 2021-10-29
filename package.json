@@ -2,6 +2,9 @@
   "name": "@example/starter",
   "version": "0.0.1",
   "private": true,
+  "engine": {
+    "node": "^16.0.0"
+  },
   "scripts": {
     "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
