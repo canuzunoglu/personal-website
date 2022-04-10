@@ -1,4 +1,7 @@
-import { Icon } from "@iconify/react";
+import { TwitterIcon } from "./icons/TwitterIcon";
+import { LinkedInIcon } from "./icons/LinkedInIcon";
+import { GithubIcon } from "./icons/GithubIcon";
+import { InstagramIcon } from "./icons/InstagramIcon";
 
 const Footer = () => {
   return (
@@ -11,7 +14,7 @@ const Footer = () => {
           href="https://www.linkedin.com/in/can-uzuno%C4%9Flu-163bb223"
           className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"
         >
-          <Icon icon="simple-icons:linkedin" width={20} height={20} />
+          <LinkedInIcon size={20} />
         </a>
         <a
           target="_blank"
@@ -20,7 +23,7 @@ const Footer = () => {
           href="https://twitter.com/canuzunoglu"
           className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"
         >
-          <Icon icon="simple-icons:twitter" width={20} height={20} />
+          <TwitterIcon size={20} />
         </a>
         <a
           target="_blank"
@@ -29,7 +32,7 @@ const Footer = () => {
           href="https://www.instagram.com/canuzunoglu"
           className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"
         >
-          <Icon icon="simple-icons:instagram" width={20} height={20} />
+          <InstagramIcon size={20} />
         </a>
         <a
           target="_blank"
@@ -38,7 +41,7 @@ const Footer = () => {
           href="https://www.github.com/canuzunoglu"
           className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"
         >
-          <Icon icon="simple-icons:github" width={20} height={20} />
+          <GithubIcon size={20} />
         </a>
       </div>
       <span className="ml-2 text-gray-700 dark:text-gray-400">

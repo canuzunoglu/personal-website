@@ -5,7 +5,7 @@ import { json } from "@remix-run/server-runtime";
 import type { Tracks } from "~/libs/spotify.server";
 import { getLastPlayedTracks } from "~/libs/spotify.server";
 import { useLoaderData } from "@remix-run/react";
-import { Icon } from "@iconify/react";
+import { SpotifyIcon } from "../components/icons/SpotifyIcon";
 
 type LoaderData = {
   lastPlayedTracks: Tracks;
@@ -29,8 +29,8 @@ export default function Index() {
       <section className="mb-10">
         <h3 className="text-sm font-medium text-slate-300 mb-3">Activity</h3>
         <div className="flex gap-3">
-          <div className=" text-slate-300">
-            <Icon icon="simple-icons:spotify" width={20} height={20} />
+          <div className="text-slate-300">
+            <SpotifyIcon size={20} />
           </div>
           <ul>
             {data.lastPlayedTracks.map((track) => (
@@ -54,4 +54,4 @@ export default function Index() {
   );
 }
 
-export const handle = { hydrate: true };
+export const handle = { hydrate: false };
