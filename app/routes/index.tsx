@@ -27,17 +27,18 @@ export default function Index() {
         Hey 👋, I'm Can. I build user interfaces.
       </p>
       <section className="mb-10">
-        <h3 className="text-sm font-medium text-slate-300 mb-3">Activity</h3>
+        <h2 className="mb-3 text-sm font-medium">Activity</h2>
         <div className="flex gap-3">
-          <div className="text-slate-300">
+          <span className="mt-1 text-slate-600 dark:text-slate-500">
             <SpotifyIcon size={20} />
-          </div>
-          <ul>
+          </span>
+
+          <ul className="list-none">
             {data.lastPlayedTracks.map((track) => (
               <li key={track.link}>
                 <a
                   href={track.link}
-                  className="block text-sm text-slate-400"
+                  className="text-sm"
                   rel="noreferrer"
                   target="_blank"
                 >

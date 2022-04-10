@@ -23,14 +23,18 @@ export default function App() {
   const includeScripts = matches.some((match) => match.handle?.hydrate);
 
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className="bg-slate-200 dark:bg-slate-900 text-slate-900 dark:text-slate-300"
+    >
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="theme-color" content="#111827" />
         <Meta />
         <Links />
       </head>
-      <body className="m-10 bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+      <body className="p-10">
         <Outlet />
         <ScrollRestoration />
         {includeScripts ? <Scripts /> : null}
