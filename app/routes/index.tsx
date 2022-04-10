@@ -13,9 +13,16 @@ type LoaderData = {
 
 export const loader: LoaderFunction = async () => {
   const lastPlayedTracks = await getLastPlayedTracks();
-  return json<LoaderData>({
-    lastPlayedTracks,
-  });
+  return json<LoaderData>(
+    {
+      lastPlayedTracks,
+    },
+    {
+      headers: {
+        "Cache-Control": "public, max-age=900",
+      },
+    }
+  );
 };
 
 export default function Index() {
