@@ -1,12 +1,8 @@
 module.exports = {
-  mode: 'jit',
-  purge: ['./public/**/*.html', './src/**/*.{astro,js,jsx,ts,tsx,vue}'],
-  darkMode: 'media',
+  content: ["./app/**/*.{ts,tsx}"],
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {},
-  },
+  variants: {},
   plugins: [],
 };
