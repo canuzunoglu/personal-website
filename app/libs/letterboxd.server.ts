@@ -11,7 +11,7 @@ export const parseLastWatchedMovies = async (
   limit: number = 3
 ) => {
   const response = await fetch(
-    `https://letterboxd.com/${username}/films/by/date/`
+    `https://letterboxd.com/${username}/films/by/date`
   );
   const text = await response.text();
   const $ = cheerio.load(text);
@@ -42,9 +42,9 @@ export const getLastWatchedMovies = async () => {
   }
 
   try {
-    const recentMovies = await parseLastWatchedMovies("canuzunoglu");
-    lruCache.set(CACHE_KEY, recentMovies, { ttl: ms("1d") });
-    return recentMovies;
+    const lastWatchedMovies = await parseLastWatchedMovies("canuzunoglu");
+    lruCache.set(CACHE_KEY, lastWatchedMovies, { ttl: ms("1d") });
+    return lastWatchedMovies;
   } catch (err) {
     // TODO: Log error
     return [];

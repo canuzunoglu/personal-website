@@ -10,7 +10,7 @@ const lruCache = (global.__lruCache__ = global.__lruCache__
   : createLruCache());
 
 function createLruCache() {
-  return new LRU({ ttl: ms("5m"), max: 100 });
+  return new LRU({ ttl: ms("1h"), max: 100 });
 }
 
 export { lruCache };
