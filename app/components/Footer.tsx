@@ -1,5 +1,5 @@
 import { TwitterIcon } from "./icons/TwitterIcon";
-import { LinkedInIcon } from "./icons/LinkedInIcon";
+import { LinkedinIcon } from "./icons/LinkedinIcon";
 import { GithubIcon } from "./icons/GithubIcon";
 import { InstagramIcon } from "./icons/InstagramIcon";
 
@@ -14,7 +14,7 @@ const Footer = () => {
           href="https://www.linkedin.com/in/can-uzuno%C4%9Flu-163bb223"
           className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"
         >
-          <LinkedInIcon size={20} />
+          <LinkedinIcon size={20} />
         </a>
         <a
           target="_blank"
