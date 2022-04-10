@@ -2,27 +2,26 @@ import Header from "~/components/Header";
 import Footer from "~/components/Footer";
 import type { LoaderFunction } from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
-import type { Tracks } from "~/libs/types.server";
+import type { Movie, Track } from "~/libs/types.server";
 import { getLastPlayedTracks } from "~/libs/spotify.server";
+import { getLastWatchedMovies } from "~/libs/letterboxd.server";
 import { useLoaderData } from "@remix-run/react";
-import { SpotifyIcon } from "../components/icons/SpotifyIcon";
+import { MusicIcon } from "~/components/icons/MusicIcon";
+import { MovieIcon } from "~/components/icons/MovieIcon";
 
 type LoaderData = {
-  lastPlayedTracks: Tracks;
+  lastPlayedTracks: Track[];
+  lastWatchedMovies: Movie[];
 };
 
 export const loader: LoaderFunction = async () => {
   const lastPlayedTracks = await getLastPlayedTracks();
-  return json<LoaderData>(
-    {
-      lastPlayedTracks,
-    },
-    {
-      headers: {
-        "Cache-Control": "public, max-age=900",
-      },
-    }
-  );
+  const lastWatchedMovies = await getLastWatchedMovies();
+
+  return json<LoaderData>({
+    lastPlayedTracks,
+    lastWatchedMovies,
+  });
 };
 
 export default function Index() {
@@ -35,26 +34,46 @@ export default function Index() {
       </p>
       <section className="mb-10">
         <h2 className="mb-3 text-sm font-medium">Activity</h2>
-        <div className="flex gap-3">
-          <span className="mt-1 text-slate-600 dark:text-slate-500">
-            <SpotifyIcon size={20} />
-          </span>
-
-          <ul className="list-none">
-            {data.lastPlayedTracks.map((track) => (
-              <li key={track.link}>
-                <a
-                  href={track.link}
-                  className="text-sm"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {track.title} -{" "}
-                  <span className="font-semibold">{track.artist}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+        <div className="flex gap-6 flex-col">
+          <div className="flex gap-3">
+            <span className="mt-1 text-slate-600 dark:text-slate-500">
+              <MusicIcon size={20} />
+            </span>
+            <ul className="list-none">
+              {data.lastPlayedTracks.map((track) => (
+                <li key={track.link}>
+                  <a
+                    href={track.link}
+                    className="text-sm"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {track.title} -{" "}
+                    <span className="font-semibold">{track.artist}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex gap-3">
+            <span className="mt-1 text-slate-600 dark:text-slate-500">
+              <MovieIcon size={20} />
+            </span>
+            <ul className="list-none">
+              {data.lastWatchedMovies.map((movie) => (
+                <li key={movie.link}>
+                  <a
+                    href={movie.link}
+                    className="text-sm"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {movie.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
       <Footer />
