@@ -2,7 +2,7 @@ import Header from "~/components/Header";
 import Footer from "~/components/Footer";
 import type { LoaderFunction } from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
-import type { Tracks } from "~/libs/spotify.server";
+import type { Tracks } from "~/libs/types.server";
 import { getLastPlayedTracks } from "~/libs/spotify.server";
 import { useLoaderData } from "@remix-run/react";
 import { SpotifyIcon } from "../components/icons/SpotifyIcon";

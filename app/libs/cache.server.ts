@@ -1,19 +1,17 @@
 import lru from "tiny-lru";
 import ms from "ms";
-import { Tracks } from "./spotify.server";
-
-export const recentTracksCache = lru<Tracks>(3, ms("15m"));
+import type { Tracks } from "./types.server";
 
 declare global {
-  var lruCache: typeof recentTracksCache;
+  var __lruCache__: ReturnType<typeof createLruCache>;
 }
 
-const lruCache = (global.lruCache = global.lruCache
-  ? global.lruCache
+const lruCache = (global.__lruCache__ = global.__lruCache__
+  ? global.__lruCache__
   : createLruCache());
 
 function createLruCache() {
-  return lru<Tracks>(3, ms("10m"));
+  return lru<Tracks>(10, ms("10m"));
 }
 
 export { lruCache };
