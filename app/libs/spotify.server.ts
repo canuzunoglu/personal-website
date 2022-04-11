@@ -1,3 +1,4 @@
+import ms from "ms";
 import { SpotifyClient } from "spotify-mini";
 import { lruCache } from "./cache.server";
 import type { Track } from "./types.server";
@@ -13,7 +14,7 @@ export const getLastPlayedTracks = async () => {
 
   try {
     const recentTracks = await spotify.getRecentTracks(3);
-    lruCache.set(CACHE_KEY, recentTracks);
+    lruCache.set(CACHE_KEY, recentTracks, { ttl: ms("3m") });
     return recentTracks;
   } catch (err) {
     // TODO: Log error
