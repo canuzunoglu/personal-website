@@ -25,7 +25,7 @@ export default function App() {
   return (
     <html
       lang="en"
-      className="bg-slate-200 dark:bg-slate-900 text-slate-900 dark:text-slate-300"
+      className="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-300"
     >
       <head>
         <meta charSet="utf-8" />

@@ -28,8 +28,20 @@ export default function Index() {
   return (
     <main>
       <Header />
-      <p className="mb-10 text-2xl sm:3xl">
-        Hey 👋, I'm Can. I build user interfaces.
+      <p className="mb-10 text-2xl sm:text-3xl">
+        Hey 👋, I'm Can. I build user interfaces
+        <br />
+        <span className="text-xl sm:3xl">
+          at{" "}
+          <a
+            href="https://messagebird.com"
+            target="_blank"
+            rel="nofollow noreferrer"
+            className="hover:text-slate-500 dark:hover:text-slate-400"
+          >
+            MessageBird
+          </a>
+        </span>
       </p>
       <section className="mb-10">
         <h2 className="mb-3 text-md sm:text-sm font-medium">Activity</h2>
@@ -44,7 +56,7 @@ export default function Index() {
                   <li key={track.link} className="mb-1">
                     <a
                       href={track.link}
-                      className="text-lg sm:text-sm"
+                      className="inline-block transition duration-100 ease-in-out text-lg sm:text-sm hover:text-slate-500 hover:translate-x-0.5 dark:hover:text-slate-400"
                       rel="noreferrer"
                       target="_blank"
                     >
@@ -66,7 +78,7 @@ export default function Index() {
                   <li key={movie.link} className="mb-1">
                     <a
                       href={movie.link}
-                      className="text-lg sm:text-sm"
+                      className="inline-block transition duration-100 ease-in-out text-lg sm:text-sm hover:text-slate-500 hover:translate-x-0.5 dark:hover:text-slate-400"
                       rel="noreferrer"
                       target="_blank"
                     >
