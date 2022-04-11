@@ -14,8 +14,8 @@ import output from "./output.css";
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: output }];
 
 export const meta: MetaFunction = () => ({
-  title: "Can Uzunoglu | UI developer",
-  description: "Homepage of a ui developer",
+  title: "Can Uzunoglu - Front-end developer",
+  description: "Homepage of an ui developer",
 });
 
 export default function App() {

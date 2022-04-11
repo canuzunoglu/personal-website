@@ -8,5 +8,5 @@ module.exports = {
   serverBuildDirectory: "netlify/functions/server/build",
   devServerPort: 8002,
   ignoredRouteFiles: [".*"],
-  serverDependenciesToBundle: ["spotify-mini"],
+  serverDependenciesToBundle: ["spotify-mini", "quick-lru"],
 };

@@ -2,7 +2,6 @@ import Header from "~/components/Header";
 import Footer from "~/components/Footer";
 import type { LoaderFunction } from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
-import type { Movie, Track } from "~/libs/types.server";
 import { getLastPlayedTracks } from "~/libs/spotify.server";
 import { getLastWatchedMovies } from "~/libs/letterboxd.server";
 import { useLoaderData } from "@remix-run/react";
@@ -10,8 +9,8 @@ import { MusicIcon } from "~/components/icons/MusicIcon";
 import { MovieIcon } from "~/components/icons/MovieIcon";
 
 type LoaderData = {
-  lastPlayedTracks: Track[];
-  lastWatchedMovies: Movie[];
+  lastPlayedTracks: Awaited<ReturnType<typeof getLastPlayedTracks>>;
+  lastWatchedMovies: Awaited<ReturnType<typeof getLastWatchedMovies>>;
 };
 
 export const loader: LoaderFunction = async () => {

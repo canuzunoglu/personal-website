@@ -1,16 +1,9 @@
-import LRU from "lru-cache";
-import ms from "ms";
+import QuickLRU from "quick-lru";
 
 declare global {
-  var __lruCache__: ReturnType<typeof createLruCache>;
+  var __cache__: QuickLRU<any, any>;
 }
 
-const lruCache = (global.__lruCache__ = global.__lruCache__
-  ? global.__lruCache__
-  : createLruCache());
-
-function createLruCache() {
-  return new LRU({ ttl: ms("1h"), max: 100 });
-}
-
-export { lruCache };
+export const cache = (global.__cache__ = global.__cache__
+  ? global.__cache__
+  : new QuickLRU({ maxSize: 1000 }));

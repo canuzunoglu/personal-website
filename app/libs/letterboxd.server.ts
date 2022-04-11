@@ -1,22 +1,23 @@
-import { lruCache } from "./cache.server";
-
 import * as cheerio from "cheerio";
-import type { Movie } from "./types.server";
 import ms from "ms";
+import { cachifyPromise } from "cachify-promise";
+import { cache } from "./cache.server";
+
+export type Movie = {
+  title: string;
+  link: string;
+};
 
 const CACHE_KEY = "letterboxd-movies";
 
-export const parseLastWatchedMovies = async (
-  username: string,
-  limit: number = 3
-) => {
+const scapeLastWatchedMovies = async (username: string, limit: number = 3) => {
   const response = await fetch(
     `https://letterboxd.com/${username}/films/by/date`
   );
   const text = await response.text();
   const $ = cheerio.load(text);
 
-  let items: Movie[] = [];
+  let movies: Movie[] = [];
 
   $(".film-poster")
     .slice(0, limit)
@@ -28,25 +29,18 @@ export const parseLastWatchedMovies = async (
         throw new Error("Failed to fetch properties");
       }
 
-      items.push({ title, link: `https://letterboxd.com${slug}` });
+      movies.push({ title, link: `https://letterboxd.com${slug}` });
     });
 
-  return items;
+  return movies;
 };
 
-export const getLastWatchedMovies = async () => {
-  const cachedMovies = lruCache.get(CACHE_KEY);
-
-  if (cachedMovies) {
-    return cachedMovies as Movie[];
+export const getLastWatchedMovies = cachifyPromise(
+  () => scapeLastWatchedMovies("canuzunoglu"),
+  {
+    ttl: ms("1d"),
+    cacheKeyFn: () => CACHE_KEY,
+    staleWhileRevalidate: true,
+    cacheMap: cache,
   }
-
-  try {
-    const lastWatchedMovies = await parseLastWatchedMovies("canuzunoglu");
-    lruCache.set(CACHE_KEY, lastWatchedMovies, { ttl: ms("1d") });
-    return lastWatchedMovies;
-  } catch (err) {
-    // TODO: Log error
-    return [];
-  }
-};
+);
