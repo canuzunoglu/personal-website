@@ -5,8 +5,8 @@ import { InstagramIcon } from "./icons/InstagramIcon";
 
 const Footer = () => {
   return (
-    <footer className="flex mt-12 align-center">
-      <div className="flex gap-2">
+    <footer className="flex mt-12 items-center">
+      <div className="flex gap-2 sm:gap-2">
         <a
           target="_blank"
           rel="noreferrer"
@@ -14,7 +14,7 @@ const Footer = () => {
           href="https://www.linkedin.com/in/can-uzuno%C4%9Flu-163bb223"
           className="text-slate-700 hover:text-slate-900 dark:text-slate-500 dark:hover:text-slate-300"
         >
-          <LinkedinIcon size={20} />
+          <LinkedinIcon className="w-6 h-6 sm:w-5 sm:h-5" />
         </a>
         <a
           target="_blank"
@@ -23,7 +23,7 @@ const Footer = () => {
           href="https://twitter.com/canuzunoglu"
           className="text-slate-700 hover:text-slate-900 dark:text-slate-500 dark:hover:text-slate-300"
         >
-          <TwitterIcon size={20} />
+          <TwitterIcon className="w-6 h-6 sm:w-5 sm:h-5" />
         </a>
         <a
           target="_blank"
@@ -32,7 +32,7 @@ const Footer = () => {
           href="https://www.instagram.com/canuzunoglu"
           className="text-slate-700 hover:text-slate-900 dark:text-slate-500 dark:hover:text-slate-300"
         >
-          <InstagramIcon size={20} />
+          <InstagramIcon className="w-6 h-6 sm:w-5 sm:h-5" />
         </a>
         <a
           target="_blank"
@@ -41,10 +41,10 @@ const Footer = () => {
           href="https://www.github.com/canuzunoglu"
           className="text-slate-700 hover:text-slate-900 dark:text-slate-500 dark:hover:text-slate-300"
         >
-          <GithubIcon size={20} />
+          <GithubIcon className="w-6 h-6 sm:w-5 sm:h-5" />
         </a>
       </div>
-      <span className="ml-2 text-sm text-slate-700 dark:text-slate-400">
+      <span className="flex items-center ml-2 text-sm text-slate-700 dark:text-slate-400">
         ❤️ from Amsterdam
       </span>
     </footer>

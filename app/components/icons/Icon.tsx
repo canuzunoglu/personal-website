@@ -4,7 +4,7 @@ export const Icon: React.FC<IconProps & { children?: React.ReactNode }> = (
   props
 ) => {
   const { size, children, ...svgProps } = props;
-  const computedSize = size || "1em";
+
   return (
     <svg
       viewBox="0 0 24 24"
@@ -13,8 +13,8 @@ export const Icon: React.FC<IconProps & { children?: React.ReactNode }> = (
       role="img"
       aria-hidden="true"
       {...svgProps}
-      height={computedSize}
-      width={computedSize}
+      height={size}
+      width={size}
     >
       {children}
     </svg>

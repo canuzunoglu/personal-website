@@ -34,7 +34,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="p-10">
+      <body className="p-8 sm:p-10">
         <Outlet />
         <ScrollRestoration />
         {includeScripts ? <Scripts /> : null}
