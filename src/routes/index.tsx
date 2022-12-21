@@ -5,14 +5,14 @@ import {
   useEndpoint,
 } from '@builder.io/qwik-city';
 import { LetterboxdIcon } from '~/components/icons/LetterboxdIcon';
-import { getLastWatchedMovies } from '~/libs/letterboxd';
+import { scapeLastWatchedMovies } from '~/libs/letterboxd';
 
 type RequestResponse = {
-  lastWatchedMovies: Awaited<ReturnType<typeof getLastWatchedMovies>>;
+  lastWatchedMovies: Awaited<ReturnType<typeof scapeLastWatchedMovies>>;
 };
 
 export const onGet: RequestHandler<RequestResponse> = async () => {
-  const lastWatchedMovies = await getLastWatchedMovies();
+  const lastWatchedMovies = await scapeLastWatchedMovies('canuzunoglu', 5);
 
   return {
     lastWatchedMovies,
