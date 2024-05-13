@@ -1,10 +1,11 @@
 import { component$, HTMLAttributes } from '@builder.io/qwik';
 
-export const TwitterIcon = component$<HTMLAttributes<HTMLElement>>(() => (
+export const TwitterIcon = component$<HTMLAttributes<SVGSVGElement>>((props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="xMidYMid meet"
     viewBox="0 0 32 32"
+    {...props}
   >
     <path
       fill="currentColor"

@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 
-export const scapeLastWatchedMovies = async (
+export const scrapeLastWatchedMovies = async (
   username: string,
   limit: number = 3
 ) => {
@@ -17,7 +17,7 @@ export const scapeLastWatchedMovies = async (
       const title = $(node).find('img').attr('alt');
       const slug = $(node).attr('data-film-slug');
 
-      return { title, link: `https://letterboxd.com${slug}` };
+      return { title, link: `https://letterboxd.com/film/${slug}` };
     })
     .get();
 };

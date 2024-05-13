@@ -1,25 +1,17 @@
-import { component$, Resource } from '@builder.io/qwik';
+import { component$ } from '@builder.io/qwik';
 import {
   DocumentHead,
-  RequestHandler,
-  useEndpoint,
+  routeLoader$,
 } from '@builder.io/qwik-city';
 import { LetterboxdIcon } from '~/components/icons/LetterboxdIcon';
-import { scapeLastWatchedMovies } from '~/libs/letterboxd';
+import { scrapeLastWatchedMovies } from '~/libs/letterboxd';
 
-type RequestResponse = {
-  lastWatchedMovies: Awaited<ReturnType<typeof scapeLastWatchedMovies>>;
-};
+export const useLastWatchedMovies = routeLoader$(async () => {
+  return await scrapeLastWatchedMovies('canuzunoglu', 5);
+});
 
-export const onGet: RequestHandler<RequestResponse> = async () => {
-  const lastWatchedMovies = await scapeLastWatchedMovies('canuzunoglu', 5);
-
-  return {
-    lastWatchedMovies,
-  };
-};
-
-export const Home = component$(({ lastWatchedMovies }: RequestResponse) => {
+export default component$(() => {
+  const lastWatchedMovies = useLastWatchedMovies();
   return (
     <div>
       <p class="mb-10 text-2xl sm:text-3xl">
@@ -40,13 +32,13 @@ export const Home = component$(({ lastWatchedMovies }: RequestResponse) => {
       <section class="mb-10">
         <h2 class="mb-3 text-md sm:text-sm font-medium">Activity</h2>
         <div class="flex gap-6 flex-col">
-          {lastWatchedMovies.length > 0 && (
+          {lastWatchedMovies.value && lastWatchedMovies.value.length > 0 && (
             <div class="flex gap-3">
               <span class="mt-1 w-6 h-6 sm:w-5 sm:h-5 text-slate-600 dark:text-slate-500">
                 <LetterboxdIcon />
               </span>
               <ul class="list-none">
-                {lastWatchedMovies.map((movie) => (
+                {lastWatchedMovies.value.map((movie) => (
                   <li key={movie.link} class="mb-1">
                     <a
                       href={movie.link}
@@ -64,19 +56,6 @@ export const Home = component$(({ lastWatchedMovies }: RequestResponse) => {
         </div>
       </section>
     </div>
-  );
-});
-
-export default component$(() => {
-  const pageData = useEndpoint<RequestResponse>();
-
-  return (
-    <Resource
-      value={pageData}
-      onPending={() => <div>Loading...</div>}
-      onRejected={() => <div>Error</div>}
-      onResolved={(data) => <Home {...data} />}
-    />
   );
 });
 

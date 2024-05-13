@@ -35,25 +35,25 @@ export const Footer = component$(() => {
           title="Can Uzunoglu - Github"
           href="https://www.github.com/canuzunoglu"
         >
-          <GithubIcon className="w-full" />
+          <GithubIcon class="w-full" />
         </SocialMediaLink>
         <SocialMediaLink
           title="Can Uzunoglu - LinkedIn"
           href="https://www.linkedin.com/in/can-uzuno%C4%9Flu-163bb223"
         >
-          <LinkedinIcon className="w-full" />
+          <LinkedinIcon class="w-full" />
         </SocialMediaLink>
         <SocialMediaLink
           title="Can Uzunoglu - Twitter"
           href="https://twitter.com/canuzunoglu"
         >
-          <TwitterIcon className="w-full" />
+          <TwitterIcon class="w-full" />
         </SocialMediaLink>
         <SocialMediaLink
           title="Can Uzunoglu - Instagram"
           href="https://www.instagram.com/canuzunoglu"
         >
-          <InstagramIcon className="w-full" />
+          <InstagramIcon class="w-full" />
         </SocialMediaLink>
       </div>
       <span class="flex items-center ml-2 text-sm text-slate-700 dark:text-slate-400">

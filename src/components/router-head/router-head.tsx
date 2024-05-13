@@ -12,22 +12,22 @@ export const RouterHead = component$(() => {
     <>
       <title>{head.title}</title>
 
-      <link rel="canonical" href={loc.href} />
+      <link rel="canonical" href={loc.url.href} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="icon" type="image/ico" href="/favicon.ico" />
       <meta name="theme-color" content="#111827" />
 
 
       {head.meta.map((m) => (
-        <meta {...m} />
+        <meta {...m} key={m.key} />
       ))}
 
       {head.links.map((l) => (
-        <link {...l} />
+        <link {...l} key={l.key} />
       ))}
 
       {head.styles.map((s) => (
-        <style {...s.props} dangerouslySetInnerHTML={s.style} />
+        <style {...s.props} dangerouslySetInnerHTML={s.style} key={s.key} />
       ))}
     </>
   );
