@@ -20,12 +20,12 @@ export default component$(() => {
         <span class="text-xl sm:3xl">
           at{' '}
           <a
-            href="https://messagebird.com"
+            href="https://bird.com"
             target="_blank"
             rel="nofollow noreferrer"
             class="hover:text-slate-500 dark:hover:text-slate-400"
           >
-            MessageBird
+            Bird
           </a>
         </span>
       </p>
