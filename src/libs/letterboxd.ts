@@ -1,0 +1,24 @@
+import * as cheerio from "cheerio";
+
+export const scrapeLastWatchedMovies = async (
+  username: string,
+  limit: number = 3,
+) => {
+  const response = await fetch(
+    `https://letterboxd.com/${username}/films/by/date`,
+  );
+
+  const text = await response.text();
+  const $ = cheerio.load(text);
+
+  return $(".film-poster")
+    .slice(0, limit)
+    .map((_, node) => {
+      const item = $(node).parent();
+      const title = item.attr("data-item-name");
+      const slug = item.attr("data-item-slug");
+
+      return { title, link: `https://letterboxd.com/film/${slug}` };
+    })
+    .get();
+};
